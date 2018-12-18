@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | downing</title>
+  <title>git的基本使用 | downing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="downing">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="git命令的常见使用方式">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git的基本使用">
+<meta property="og:url" content="http://yoursite.com/2018/08/08/git的基本使用/index.html">
 <meta property="og:site_name" content="downing">
+<meta property="og:description" content="git命令的常见使用方式">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-18T03:54:48.289Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="downing">
+<meta name="twitter:title" content="git的基本使用">
+<meta name="twitter:description" content="git命令的常见使用方式">
   
     <link rel="alternative" href="/atom.xml" title="downing" type="application/atom+xml">
   
@@ -140,112 +145,69 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-git的基本使用" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/18/String与八大基本数据类型/" class="archive-article-date">
-  	<time datetime="2018-12-18T03:47:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-18</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/18/String与八大基本数据类型/">String与八大基本数据类型</a>
+    <h1 class="article-title" itemprop="name">
+      git的基本使用
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/17/排序算法/" class="archive-article-date">
-  	<time datetime="2018-12-17T09:05:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/17/排序算法/">排序算法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/08/git的基本使用/" class="archive-article-date">
+        
+        <a href="/2018/08/08/git的基本使用/" class="archive-article-date">
   	<time datetime="2018-08-08T06:30:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-08</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/08/git的基本使用/">git的基本使用</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>git命令的常见使用方式<br><a id="more"></a></p>
+<h1 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h1><p>当我们需要修改配置的时候可以使用git config –globl［参数］全局配置git,例如可以通过使用 以下命令来设置git的用户名</p>
+<blockquote>
+<p>git config –globl user.name=”ingdown”</p>
+</blockquote>
+<p>还可以使用git config –list查看当前配置</p>
+<h1 id="与远程仓库连接"><a href="#与远程仓库连接" class="headerlink" title="与远程仓库连接"></a>与远程仓库连接</h1><p>可以在git命令行中使用git remote -v查看本地git仓库与远程连接情况<br>当我们需要添加一个远程库的时候可以git remote add 加上远程主机名 git的ssh地址<br>当我们需要删除某个远程仓库的时候可以使用git remote rm 主机名</p>
+<h1 id="远程协作"><a href="#远程协作" class="headerlink" title="远程协作"></a>远程协作</h1><p>我们可以通过git fetch origin master命令拉取远程仓库的代码，这个命令会把当前仓库的所有分支拉取到本地，但不会自动合并，如果我们想拉取代码后Git帮我们尝试自动分支，我们需要用git pull origin master,此命令不会百分百合并成功</p>
+<h1 id="工作目录-暂存区-git目录"><a href="#工作目录-暂存区-git目录" class="headerlink" title="工作目录 暂存区 git目录"></a>工作目录 暂存区 git目录</h1><h1 id="添加到暂存区"><a href="#添加到暂存区" class="headerlink" title="添加到暂存区"></a>添加到暂存区</h1><p>在我们写好我们的代码后，我们可以通过git add [文件名] 来追踪某个文件，把其添加到暂存区，此文件将被git所管理，此时暂存区的文件还未同步到git仓库，如果我们想要把暂存区的文件保存到我们git仓库中，我们需要使用git commit -m “描述” 来提交我们的代码到仓库中，如果我们想要修改上一次的提交，可以使用命令git commit –amend进行修改</p>
+<h1 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h1><p>很多时候，我们可能在开发过程中产生一些误操作，这时我们可以使用git reset HEAD [文件名]来撤销已经跟踪但还未提交的文件，当我们想要撤销对文件的修改是时可以使用git checkout – [文件名]来取消对文件的修改</p>
+<h1 id="推送到远程仓库"><a href="#推送到远程仓库" class="headerlink" title="推送到远程仓库"></a>推送到远程仓库</h1><p>使用git push origin master进行远程同步</p>
+<h1 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h1><p>git log</p>
+<h1 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h1><p>很多时候，我们在开发过程中都会新建一个分区，并在此基础上进行开发，如何新建一个分支呢？，我们使用git branch [分支名]创建一个新的分支，当我们想要切换分支的时候使用git checkout [分支名],我们在新建的分支开发完成后，需要进行分支合并，这时使用命令git merge [分支名],就可以把特定分支与当前分支进行合并</p>
+<p>git stash<br>git pop</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢大佬<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -257,19 +219,110 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/08/git的基本使用/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/12/17/排序算法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          排序算法
+        
+      </div>
+    </a>
   
   
-    </div></section>
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -292,8 +345,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
