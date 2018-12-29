@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/12 | downing</title>
+  <title>策略模式初识 | downing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="downing">
-<meta property="og:url" content="http://yoursite.com/archives/2018/12/index.html">
+  <meta name="description" content="定义一系列算法，将每个算法封装到具有公共接口的一系列具体策略类中，从而使之可以相互替换，并让算法可以在不影响到客户端的情况下发生变化。">
+<meta name="keywords" content="设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="策略模式初识">
+<meta property="og:url" content="http://yoursite.com/2018/12/29/策略模式初识/index.html">
 <meta property="og:site_name" content="downing">
+<meta property="og:description" content="定义一系列算法，将每个算法封装到具有公共接口的一系列具体策略类中，从而使之可以相互替换，并让算法可以在不影响到客户端的情况下发生变化。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-29T07:57:08.416Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="downing">
+<meta name="twitter:title" content="策略模式初识">
+<meta name="twitter:description" content="定义一系列算法，将每个算法封装到具有公共接口的一系列具体策略类中，从而使之可以相互替换，并让算法可以在不影响到客户端的情况下发生变化。">
   
     <link rel="alternative" href="/atom.xml" title="downing" type="application/atom+xml">
   
@@ -152,36 +157,70 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-策略模式初识" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/29/策略模式初识/" class="archive-article-date">
-  	<time datetime="2018-12-29T06:42:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-29</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/29/策略模式初识/">策略模式初识</a>
+    <h1 class="article-title" itemprop="name">
+      策略模式初识
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/12/29/策略模式初识/" class="archive-article-date">
+  	<time datetime="2018-12-29T06:42:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 定义一系列算法，将每个算法封装到具有公共接口的一系列具体策略类中，从而使之可以相互替换，并让算法可以在不影响到客户端的情况下发生变化。<br><a id="more"></a></p>
+<h3 id="主要解决的问题"><a href="#主要解决的问题" class="headerlink" title="主要解决的问题"></a>主要解决的问题</h3><p>使得客户端可以根据外部条件选择不同策略来解决不同问题</p>
+<p>其体现了两个非常基本的面向对象设计原则：<br>1.封装变化的概念<br>2.编程中使用接口，而不是对接口的实现</p>
+<p>策略模式仅仅封装算法，但策略模式并不决定在何时使用何种算法，算法的选择由客户端来决定<br>将算法的责任和本身进行解耦<br>对算法进行封装，将算法的责任和算法本身分割开，委派给不同的对象管理。<br>让算法和对象分开来，使得算法可以独立于使用它的客户而变化</p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>策略模式主要分为三部分：</p>
+<p>1.抽象接口角色<br>2.具体角色<br>3.环境角色</p>
+<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>需求：<br>有一个Person类，属性有id，name，以及age。对person对象通过年龄进行排序，可拓展为对姓名或者ID进行排序，本次demo只演示对年龄排序，其它情况可类推</p>
+<h4 id="抽象接口角色"><a href="#抽象接口角色" class="headerlink" title="抽象接口角色"></a>抽象接口角色</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @author downing</span><br><span class="line"> * @descript 抽象策略接口</span><br><span class="line"> * @create 2018-12-29 09:53</span><br><span class="line"> */</span><br><span class="line">public interface SortInterface &#123;</span><br><span class="line"></span><br><span class="line">    void sort(List&lt;Person&gt; personList);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此接口只定义一个排序的方法，具体逻辑由具体角色实现</p>
+<h4 id="具体角色"><a href="#具体角色" class="headerlink" title="具体角色"></a>具体角色</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @author downing</span><br><span class="line"> * @descript 具体角色</span><br><span class="line"> * @create 2018-12-29 09:55</span><br><span class="line"> */</span><br><span class="line">public class AgeSort implements SortInterface, Comparator&lt;Person&gt; &#123;</span><br><span class="line"></span><br><span class="line">    private boolean flag = true;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void sort(List&lt;Person&gt; personList) &#123;</span><br><span class="line">        Collections.sort(personList, this);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public AgeSort(boolean flag) &#123;</span><br><span class="line">        this.flag = flag;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int compare(Person o1, Person o2) &#123;</span><br><span class="line">        if (flag) &#123;</span><br><span class="line">            return o1.getAge() - o2.getAge();</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return o2.getAge() - o1.getAge();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实现一个按年龄排序的类，其中flag标志为升序还是降序，通过重写compare()方法，根据年龄进行比较，最后调用Collections类的sort()方法，传入自定义的比较器，从而实现排序功能</p>
+<h4 id="环境角色"><a href="#环境角色" class="headerlink" title="环境角色"></a>环境角色</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @author downing</span><br><span class="line"> * @descript 环境角色</span><br><span class="line"> * @create 2018-12-29 13:48</span><br><span class="line"> */</span><br><span class="line">public class Environment &#123;</span><br><span class="line"></span><br><span class="line">    private SortInterface sortInterface;</span><br><span class="line"></span><br><span class="line">    public Environment(SortInterface sortInterface) &#123;</span><br><span class="line">        this.sortInterface = sortInterface;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public SortInterface getSortInterface() &#123;</span><br><span class="line">        return sortInterface;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setSortInterface(SortInterface sortInterface) &#123;</span><br><span class="line">        this.sortInterface = sortInterface;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void sort(List&lt;Person&gt; list)&#123;</span><br><span class="line">        this.sortInterface.sort(list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="客户端程序"><a href="#客户端程序" class="headerlink" title="客户端程序"></a>客户端程序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @author downing</span><br><span class="line"> * @descript</span><br><span class="line"> * @create 2018-12-29 13:52</span><br><span class="line"> */</span><br><span class="line">public class Client &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        SortInterface ageSort = new AgeSort(true);</span><br><span class="line"></span><br><span class="line">        Environment environment = new Environment(ageSort);</span><br><span class="line"></span><br><span class="line">        Person p1 = new Person();</span><br><span class="line">        p1.setAge(12);</span><br><span class="line">        p1.setName(&quot;zs&quot;);</span><br><span class="line">        p1.setId(1);</span><br><span class="line"></span><br><span class="line">        Person p2 = new Person();</span><br><span class="line">        p2.setAge(20);</span><br><span class="line">        p2.setName(&quot;ls&quot;);</span><br><span class="line">        p2.setId(2);</span><br><span class="line"></span><br><span class="line">        List&lt;Person&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">        list.add(p1);</span><br><span class="line">        list.add(p2);</span><br><span class="line"></span><br><span class="line">        environment.sort(list);</span><br><span class="line">        System.out.println(list);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p>当传入ture的时候代表升序排序<br>[Person{id=1, age=12, name=’zs’}, Person{id=2, age=20, name=’ls’}]</p>
+<p>当传入false的时候代表降序排序<br>[ Person{id=2, age=20, name=’ls’},Person{id=1, age=12, name=’zs’}]</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢大佬<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -193,95 +232,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/12/29/策略模式初识/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/18/String与八大基本数据类型/" class="archive-article-date">
-  	<time datetime="2018-12-18T03:47:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-18</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/12/18/String与八大基本数据类型/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">String与八大基本数据类型</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/18/String与八大基本数据类型/">String与八大基本数据类型</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/17/排序算法/" class="archive-article-date">
-  	<time datetime="2018-12-17T09:05:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/17/排序算法/">排序算法</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -304,8 +354,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
