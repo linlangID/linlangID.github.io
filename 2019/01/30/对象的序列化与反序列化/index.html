@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>排序算法 | downing</title>
+  <title>对象的序列化与反序列化 | downing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="常见的几种排序算法">
-<meta name="keywords" content="算法">
+  <meta name="description" content="把对象转换为字节序列的过程叫序列化把字节序列恢复为对象的过程叫做反序列化">
+<meta name="keywords" content="Java基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="排序算法">
-<meta property="og:url" content="http://yoursite.com/2018/12/17/排序算法/index.html">
+<meta property="og:title" content="对象的序列化与反序列化">
+<meta property="og:url" content="http://yoursite.com/2019/01/30/对象的序列化与反序列化/index.html">
 <meta property="og:site_name" content="downing">
-<meta property="og:description" content="常见的几种排序算法">
+<meta property="og:description" content="把对象转换为字节序列的过程叫序列化把字节序列恢复为对象的过程叫做反序列化">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-18T03:55:31.062Z">
+<meta property="og:updated_time" content="2019-01-30T04:44:32.339Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="排序算法">
-<meta name="twitter:description" content="常见的几种排序算法">
+<meta name="twitter:title" content="对象的序列化与反序列化">
+<meta name="twitter:description" content="把对象转换为字节序列的过程叫序列化把字节序列恢复为对象的过程叫做反序列化">
   
     <link rel="alternative" href="/atom.xml" title="downing" type="application/atom+xml">
   
@@ -157,29 +157,38 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-排序算法" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-对象的序列化与反序列化" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      排序算法
+      对象的序列化与反序列化
     </h1>
   
 
         
-        <a href="/2018/12/17/排序算法/" class="archive-article-date">
-  	<time datetime="2018-12-17T09:05:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-17</time>
+        <a href="/2019/01/30/对象的序列化与反序列化/" class="archive-article-date">
+  	<time datetime="2019-01-30T03:05:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>常见的几种排序算法<br><a id="more"></a></p>
-<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public static int[] bubbleSort(int[] data) &#123;</span><br><span class="line">    if (data.length != 0) &#123;</span><br><span class="line">        for (int i = 0; i &lt; data.length; i++) &#123;</span><br><span class="line">            for (int j = 0; j &lt; data.length - i - 1; j++) &#123;</span><br><span class="line">                if (data[j] &gt; data[j + 1]) &#123;</span><br><span class="line">                    int temp = data[j];</span><br><span class="line">                    data[j] = data[j+1];</span><br><span class="line">                    data[j+1] = temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><h3 id="二分查找法"><a href="#二分查找法" class="headerlink" title="二分查找法"></a>二分查找法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class BinarySearch &#123;</span><br><span class="line"></span><br><span class="line">    public static int binarySearch(int[] array, int value) &#123;</span><br><span class="line">        int low = 0;</span><br><span class="line">        int high = array.length - 1;</span><br><span class="line">        int middle = array.length / 2;</span><br><span class="line"></span><br><span class="line">        while (low &lt;= high) &#123;</span><br><span class="line">            if (array[middle] == value) &#123;</span><br><span class="line">                return middle;</span><br><span class="line">            &#125; else if (array[middle] &lt; value) &#123;</span><br><span class="line">                low = middle + 1;</span><br><span class="line">            &#125; else if (array[middle] &gt; value) &#123;</span><br><span class="line">                high = middle - 1;</span><br><span class="line">            &#125;</span><br><span class="line">            middle = (low + high) / 2;</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int[] arr = &#123;1, 2, 3, 4, 5, 6, 7, 8&#125;;</span><br><span class="line">        int value = 10;</span><br><span class="line">        System.out.println(binarySearch(arr, value));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>把对象转换为字节序列的过程叫序列化<br>把字节序列恢复为对象的过程叫做反序列化<br><a id="more"></a></p>
+<p>对象的序列化主要有两种用途<br>1）在网络上传送对象的字节序列<br>2）把对象的字节序列永久地保存到硬盘上，通常存放在一个文件中</p>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>一个类若想被序列化，则要实现java.io.Serializable接口,该接口中没有定义任何的方法，是一个标示性接口（Marker Interfacec）,当一个类实现了此接口，那么表示该类是可以被序列化的</p>
+<p>在序列化时，static变量和方法是不可以被序列化的，如果 A 包含了对 B 的引用，那么在序列化A 的时候也会将 B 一并地序列化；如果此时 A 可以序列化，B 无法序列化，那么当序列化 A 的时候就会发生异常，这时就需要将对 B 的引用设为 transient，该关键字表示变量不会被序列化。</p>
+<p>定义一个Person类，实现Serializable接口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Data</span><br><span class="line">public class Person implements Serializable &#123;</span><br><span class="line"></span><br><span class="line">    private int age;</span><br><span class="line">    private String name;</span><br><span class="line">    private String sex;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>序列化Person对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">private static void SerializePerson() throws FileNotFoundException,</span><br><span class="line">         IOException &#123;</span><br><span class="line">     Person person = new Person();</span><br><span class="line">     person.setName(&quot;zhangsan&quot;);</span><br><span class="line">     person.setAge(25);</span><br><span class="line">     person.setSex(&quot;男&quot;);</span><br><span class="line">     // ObjectOutputStream 对象输出流，将Person对象存储到E盘的Person.txt文件中，完成对Person对象的序列化操作</span><br><span class="line">     ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(</span><br><span class="line">             new File(&quot;C:/Person.txt&quot;)));</span><br><span class="line">     oos.writeObject(person);</span><br><span class="line">     System.out.println(&quot;对象序列化成功！&quot;);</span><br><span class="line">     oos.close();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>反序列化Person对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private static Person DeserializePerson() throws Exception, IOException &#123;</span><br><span class="line">     ObjectInputStream ois = new ObjectInputStream(new FileInputStream(</span><br><span class="line">             new File(&quot;C:/Person.txt&quot;)));</span><br><span class="line">     Person person = (Person) ois.readObject();</span><br><span class="line">     System.out.println(&quot;Person对象反序列化成功！&quot;);</span><br><span class="line">     return person;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="细粒度的控制序列化的过程"><a href="#细粒度的控制序列化的过程" class="headerlink" title="细粒度的控制序列化的过程"></a>细粒度的控制序列化的过程</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">private void writeObject(java.io.ObjectOutPutStream out) throws IOException&#123;</span><br><span class="line">    out.wirteInt(age);</span><br><span class="line">    out.writeUTF(name);</span><br><span class="line">    System.out.println(&quot;write object&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">private Object readObject(java.io.ObjectInPutStream in) throws IOException,ClassNotFoundException&#123;</span><br><span class="line">    name = in.readUTF();</span><br><span class="line">    System.out.println(&quot;read object&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当我们在一个待序列化/反序列化的类中实现了以上两个 private 方法（方法声明要<br>与上面的保持完全的一致），那么就允许我们以更加底层、更加细粒度的方式控制序<br>列化/反序列化的过程。</p>
+<h4 id="serialVersionUID作用"><a href="#serialVersionUID作用" class="headerlink" title="serialVersionUID作用"></a>serialVersionUID作用</h4><p>s​e​r​i​a​l​V​e​r​s​i​o​n​U​I​D​:​ ​字​面​意​思​上​是​序​列​化​的​版​本​号​，凡是实现Serializable接口的类都有一个表示序列化版本标识符的静态变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">private static final long serialVersionUID</span><br></pre></td></tr></table></figure></p>
+<p>只要我们自己指定了serialVersionUID，就可以在序列化后，去添加一个字段，或者方法，而不会影响到后期的还原，还原后的对象照样可以使用，而且还多了方法或者属性可以用。</p>
+<p>如果没有指定serialVersionUID，java编译器会自动给这个class进行一个摘要算法，类似于指纹算法，只要这个文件 多一个空格，得到的UID就会截然不同的，可以保证在这么多类中，这个编号是唯一的。所以，添加了一个字段后，由于没有显式指定 serialVersionUID，编译器又为我们生成了一个UID，当然和前面保存在文件中的那个不会一样了，然后执行反序列操作，此时就会抛出如下的异常信息。</p>
 
       
 
@@ -214,7 +223,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java基础</a>
         		</li>
       		
 		</ul>
@@ -270,7 +279,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/12/17/排序算法/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/01/30/对象的序列化与反序列化/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -284,18 +293,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/12/18/String与八大基本数据类型/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          String与八大基本数据类型
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/08/08/git的基本使用/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">git的基本使用</div>
+    <a href="/2018/12/29/策略模式初识/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">策略模式初识</div>
       <i class="icon-circle-right"></i>
     </a>
   
