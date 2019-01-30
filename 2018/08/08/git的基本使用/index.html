@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="downing">
 <meta property="og:description" content="git命令的常见使用方式">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-18T03:59:26.735Z">
+<meta property="og:updated_time" content="2018-12-29T10:13:52.370Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git的基本使用">
 <meta name="twitter:description" content="git命令的常见使用方式">
@@ -178,19 +178,20 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>git命令的常见使用方式<br><a id="more"></a></p>
-<h1 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h1><p>当我们需要修改配置的时候可以使用git config –globl［参数］全局配置git,例如可以通过使用 以下命令来设置git的用户名</p>
+<h3 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h3><p>当我们需要修改配置的时候可以使用git config –globl［参数］全局配置git,例如可以通过使用 以下命令来设置git的用户名</p>
 <blockquote>
 <p>git config –globl user.name=”ingdown”</p>
 </blockquote>
 <p>还可以使用git config –list查看当前配置</p>
-<h1 id="与远程仓库连接"><a href="#与远程仓库连接" class="headerlink" title="与远程仓库连接"></a>与远程仓库连接</h1><p>可以在git命令行中使用git remote -v查看本地git仓库与远程连接情况<br>当我们需要添加一个远程库的时候可以git remote add 加上远程主机名 git的ssh地址<br>当我们需要删除某个远程仓库的时候可以使用git remote rm 主机名</p>
-<h1 id="远程协作"><a href="#远程协作" class="headerlink" title="远程协作"></a>远程协作</h1><p>我们可以通过git fetch origin master命令拉取远程仓库的代码，这个命令会把当前仓库的所有分支拉取到本地，但不会自动合并，如果我们想拉取代码后Git帮我们尝试自动分支，我们需要用git pull origin master,此命令不会百分百合并成功</p>
-<h1 id="工作目录-暂存区-git目录"><a href="#工作目录-暂存区-git目录" class="headerlink" title="工作目录 暂存区 git目录"></a>工作目录 暂存区 git目录</h1><h1 id="添加到暂存区"><a href="#添加到暂存区" class="headerlink" title="添加到暂存区"></a>添加到暂存区</h1><p>在我们写好我们的代码后，我们可以通过git add [文件名] 来追踪某个文件，把其添加到暂存区，此文件将被git所管理，此时暂存区的文件还未同步到git仓库，如果我们想要把暂存区的文件保存到我们git仓库中，我们需要使用git commit -m “描述” 来提交我们的代码到仓库中，如果我们想要修改上一次的提交，可以使用命令git commit –amend进行修改</p>
-<h1 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h1><p>很多时候，我们可能在开发过程中产生一些误操作，这时我们可以使用git reset HEAD [文件名]来撤销已经跟踪但还未提交的文件，当我们想要撤销对文件的修改是时可以使用git checkout – [文件名]来取消对文件的修改</p>
-<h1 id="推送到远程仓库"><a href="#推送到远程仓库" class="headerlink" title="推送到远程仓库"></a>推送到远程仓库</h1><p>使用git push origin master进行远程同步</p>
-<h1 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h1><p>git log</p>
-<h1 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h1><p>很多时候，我们在开发过程中都会新建一个分区，并在此基础上进行开发，如何新建一个分支呢？，我们使用git branch [分支名]创建一个新的分支，当我们想要切换分支的时候使用git checkout [分支名],我们在新建的分支开发完成后，需要进行分支合并，这时使用命令git merge [分支名],就可以把特定分支与当前分支进行合并</p>
-<p>git stash<br>git pop</p>
+<h3 id="与远程仓库连接"><a href="#与远程仓库连接" class="headerlink" title="与远程仓库连接"></a>与远程仓库连接</h3><p>可以在git命令行中使用git remote -v查看本地git仓库与远程连接情况<br>当我们需要添加一个远程库的时候可以git remote add 加上远程主机名 git的ssh地址<br>当我们需要删除某个远程仓库的时候可以使用git remote rm 主机名</p>
+<h3 id="远程协作"><a href="#远程协作" class="headerlink" title="远程协作"></a>远程协作</h3><p>我们可以通过git fetch origin master命令拉取远程仓库的代码，这个命令会把当前仓库的所有分支拉取到本地，但不会自动合并，如果我们想拉取代码后Git帮我们尝试自动分支，我们需要用git pull origin master,此命令不会百分百合并成功</p>
+<h3 id="工作目录-暂存区-git目录"><a href="#工作目录-暂存区-git目录" class="headerlink" title="工作目录 暂存区 git目录"></a>工作目录 暂存区 git目录</h3><h3 id="添加到暂存区"><a href="#添加到暂存区" class="headerlink" title="添加到暂存区"></a>添加到暂存区</h3><p>在我们写好我们的代码后，我们可以通过git add [文件名] 来追踪某个文件，把其添加到暂存区，此文件将被git所管理，此时暂存区的文件还未同步到git仓库，如果我们想要把暂存区的文件保存到我们git仓库中，我们需要使用git commit -m “描述” 来提交我们的代码到仓库中，如果我们想要修改上一次的提交，可以使用命令git commit –amend进行修改</p>
+<h3 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h3><p>很多时候，我们可能在开发过程中产生一些误操作，这时我们可以使用git reset HEAD [文件名]来撤销已经跟踪但还未提交的文件，当我们想要撤销对文件的修改是时可以使用git checkout – [文件名]来取消对文件的修改</p>
+<h3 id="推送到远程仓库"><a href="#推送到远程仓库" class="headerlink" title="推送到远程仓库"></a>推送到远程仓库</h3><p>使用git push origin master进行远程同步</p>
+<h3 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h3><p>git log</p>
+<h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><p>很多时候，我们在开发过程中都会新建一个分区，并在此基础上进行开发，如何新建一个分支呢？，我们使用git branch [分支名]创建一个新的分支，当我们想要切换分支的时候使用git checkout [分支名],我们在新建的分支开发完成后，需要进行分支合并，这时使用命令git merge [分支名],就可以把特定分支与当前分支进行合并</p>
+<p>git stash 把当前改动暂存工作区</p>
+<p>git pop 弹出暂存在工作区的内容</p>
 
       
 
@@ -344,7 +345,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 downing
+    		&copy; 2019 downing
     	</div>
       	<!-- <div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -419,6 +420,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
@@ -427,15 +432,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式 策略模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
             
             <div class="clearfix"></div>
