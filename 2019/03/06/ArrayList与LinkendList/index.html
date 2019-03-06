@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>对象的序列化与反序列化 | downing</title>
+  <title>ArrayList与LinkedList | downing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="把对象转换为字节序列的过程叫序列化把字节序列恢复为对象的过程叫做反序列化">
-<meta name="keywords" content="Java基础">
+  <meta name="description" content="数组和链表的特性差异，本质是：连续空间存储和非连续空间存储的差异。主要有下面两点：">
+<meta name="keywords" content="集合">
 <meta property="og:type" content="article">
-<meta property="og:title" content="对象的序列化与反序列化">
-<meta property="og:url" content="http://yoursite.com/2019/01/30/对象的序列化与反序列化/index.html">
+<meta property="og:title" content="ArrayList与LinkedList">
+<meta property="og:url" content="http://yoursite.com/2019/03/06/ArrayList与LinkendList/index.html">
 <meta property="og:site_name" content="downing">
-<meta property="og:description" content="把对象转换为字节序列的过程叫序列化把字节序列恢复为对象的过程叫做反序列化">
+<meta property="og:description" content="数组和链表的特性差异，本质是：连续空间存储和非连续空间存储的差异。主要有下面两点：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-30T04:44:32.339Z">
+<meta property="og:updated_time" content="2019-03-06T06:17:46.866Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="对象的序列化与反序列化">
-<meta name="twitter:description" content="把对象转换为字节序列的过程叫序列化把字节序列恢复为对象的过程叫做反序列化">
+<meta name="twitter:title" content="ArrayList与LinkedList">
+<meta name="twitter:description" content="数组和链表的特性差异，本质是：连续空间存储和非连续空间存储的差异。主要有下面两点：">
   
     <link rel="alternative" href="/atom.xml" title="downing" type="application/atom+xml">
   
@@ -157,39 +157,38 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-对象的序列化与反序列化" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-ArrayList与LinkendList" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      对象的序列化与反序列化
+      ArrayList与LinkedList
     </h1>
   
 
         
-        <a href="/2019/01/30/对象的序列化与反序列化/" class="archive-article-date">
-  	<time datetime="2019-01-30T03:05:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-30</time>
+        <a href="/2019/03/06/ArrayList与LinkendList/" class="archive-article-date">
+  	<time datetime="2019-03-06T03:29:11.446Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>把对象转换为字节序列的过程叫序列化<br>把字节序列恢复为对象的过程叫做反序列化<br><a id="more"></a></p>
-<p>对象的序列化主要有两种用途<br>1）在网络上传送对象的字节序列<br>2）把对象的字节序列永久地保存到硬盘上，通常存放在一个文件中</p>
-<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>一个类若想被序列化，则要实现java.io.Serializable接口,该接口中没有定义任何的方法，是一个标示性接口（Marker Interfacec）,当一个类实现了此接口，那么表示该类是可以被序列化的</p>
-<p>在序列化时，static变量和方法是不可以被序列化的，如果 A 包含了对 B 的引用，那么在序列化A 的时候也会将 B 一并地序列化；如果此时 A 可以序列化，B 无法序列化，那么当序列化 A 的时候就会发生异常，这时就需要将对 B 的引用设为 transient，该关键字表示变量不会被序列化。</p>
-<p>定义一个Person类，实现Serializable接口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Data</span><br><span class="line">public class Person implements Serializable &#123;</span><br><span class="line"></span><br><span class="line">    private int age;</span><br><span class="line">    private String name;</span><br><span class="line">    private String sex;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
-<p>序列化Person对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">private static void SerializePerson() throws FileNotFoundException,</span><br><span class="line">         IOException &#123;</span><br><span class="line">     Person person = new Person();</span><br><span class="line">     person.setName(&quot;zhangsan&quot;);</span><br><span class="line">     person.setAge(25);</span><br><span class="line">     person.setSex(&quot;男&quot;);</span><br><span class="line">     // ObjectOutputStream 对象输出流，将Person对象存储到E盘的Person.txt文件中，完成对Person对象的序列化操作</span><br><span class="line">     ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(</span><br><span class="line">             new File(&quot;C:/Person.txt&quot;)));</span><br><span class="line">     oos.writeObject(person);</span><br><span class="line">     System.out.println(&quot;对象序列化成功！&quot;);</span><br><span class="line">     oos.close();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
-<p>反序列化Person对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private static Person DeserializePerson() throws Exception, IOException &#123;</span><br><span class="line">     ObjectInputStream ois = new ObjectInputStream(new FileInputStream(</span><br><span class="line">             new File(&quot;C:/Person.txt&quot;)));</span><br><span class="line">     Person person = (Person) ois.readObject();</span><br><span class="line">     System.out.println(&quot;Person对象反序列化成功！&quot;);</span><br><span class="line">     return person;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="细粒度的控制序列化的过程"><a href="#细粒度的控制序列化的过程" class="headerlink" title="细粒度的控制序列化的过程"></a>细粒度的控制序列化的过程</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">private void writeObject(java.io.ObjectOutPutStream out) throws IOException&#123;</span><br><span class="line">    out.wirteInt(age);</span><br><span class="line">    out.writeUTF(name);</span><br><span class="line">    System.out.println(&quot;write object&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">private Object readObject(java.io.ObjectInPutStream in) throws IOException,ClassNotFoundException&#123;</span><br><span class="line">    name = in.readUTF();</span><br><span class="line">    System.out.println(&quot;read object&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当我们在一个待序列化/反序列化的类中实现了以上两个 private 方法（方法声明要<br>与上面的保持完全的一致），那么就允许我们以更加底层、更加细粒度的方式控制序<br>列化/反序列化的过程。</p>
-<h4 id="serialVersionUID作用"><a href="#serialVersionUID作用" class="headerlink" title="serialVersionUID作用"></a>serialVersionUID作用</h4><p>s​e​r​i​a​l​V​e​r​s​i​o​n​U​I​D​:​ ​字​面​意​思​上​是​序​列​化​的​版​本​号​，凡是实现Serializable接口的类都有一个表示序列化版本标识符的静态变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">private static final long serialVersionUID</span><br></pre></td></tr></table></figure></p>
-<p>只要我们自己指定了serialVersionUID，就可以在序列化后，去添加一个字段，或者方法，而不会影响到后期的还原，还原后的对象照样可以使用，而且还多了方法或者属性可以用。</p>
-<p>如果没有指定serialVersionUID，java编译器会自动给这个class进行一个摘要算法，类似于指纹算法，只要这个文件 多一个空格，得到的UID就会截然不同的，可以保证在这么多类中，这个编号是唯一的。所以，添加了一个字段后，由于没有显式指定 serialVersionUID，编译器又为我们生成了一个UID，当然和前面保存在文件中的那个不会一样了，然后执行反序列操作，此时就会抛出如下的异常信息。</p>
-
+        <p>数组和链表的特性差异，本质是：连续空间存储和非连续空间存储的差异。主要有下面两点：<br><a id="more"></a></p>
+<p>ArrayList：底层是Object数组实现的：由于数组的地址是连续的，数组支持O(1)随机访问；数组在初始化时需要指定容量；数组不支持动态扩容，像ArrayList、Vector和Stack使用的时候看似不用考虑容量问题（因为可以一直往里面存放数据）；但是它们的底层实际做了扩容；数组扩容代价比较大，需要开辟一个新数组将数据拷贝进去，数组扩容效率低；适合读数据较多的场合。<br>LinkedList：底层使用一个Node数据结构，有前后两个指针，双向链表实现的。相对数组，链表插入效率较高，只需要更改前后两个指针即可；另外链表不存在扩容问题，因为链表不要求存储空间连续，每次插入数据都只是改变last指针；另外，链表所需要的内存比数组要多，因为他要维护前后两个指针；它适合删除，插入较多的场景LinkedList还实现了Deque接口。</p>
+<h4 id="Arraylist"><a href="#Arraylist" class="headerlink" title="Arraylist"></a>Arraylist</h4><h5 id="成员属性"><a href="#成员属性" class="headerlink" title="成员属性"></a>成员属性</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Default initial capacity.</span><br><span class="line"> * 默认初始化大小</span><br><span class="line"> */</span><br><span class="line">private static final int DEFAULT_CAPACITY = 10;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Shared empty array instance used for empty instances.</span><br><span class="line"> * 当传入ArrayList构造器的容量为0时用这个数组表示：容器的容量为0</span><br><span class="line"> */</span><br><span class="line">private static final Object[] EMPTY_ELEMENTDATA = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Shared empty array instance used for default sized empty instances. We</span><br><span class="line"> * distinguish this from EMPTY_ELEMENTDATA to know how much to inflate when</span><br><span class="line"> * first element is added.</span><br><span class="line"> * 主要作为一个标识位，在扩容时区分：默认大小和容量为0，使用默认容量时采取的是“懒加载”:即等到add元素的时候才进行实际容量的分配，</span><br><span class="line"> */</span><br><span class="line">private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * The array buffer into which the elements of the ArrayList are stored.</span><br><span class="line"> * The capacity of the ArrayList is the length of this array buffer. Any</span><br><span class="line"> * empty ArrayList with elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA</span><br><span class="line"> * will be expanded to DEFAULT_CAPACITY when the first element is added.</span><br><span class="line"> * ArrayList底层使用Object数组保存的元素</span><br><span class="line"> */</span><br><span class="line">transient Object[] elementData; // non-private to simplify nested class access</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * The size of the ArrayList (the number of elements it contains).</span><br><span class="line"> *</span><br><span class="line"> * @serial</span><br><span class="line"> */</span><br><span class="line">private int size;</span><br></pre></td></tr></table></figure>
+<h5 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h5><p>无参构造器，指向的是默认容量大小的Object数组，注意使用无参构造函数的时候并没有直接创建容量 为10(默认容量是10)的Object数组,而是采取懒加载的策略：使用DEFAULTCAPACITY_EMPTY_ELEMENTDATA,这个默认数组的容量是0,所以得区分是默认容量，还是你传给构造器的容量参数大小本身就是0。在真正执行add操作时才会创建Object数组，即在扩容函数中有处理默认容量的逻辑<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Constructs an empty list with an initial capacity of ten.</span><br><span class="line"> */</span><br><span class="line">public ArrayList() &#123;</span><br><span class="line">    //这个赋值操作仅仅是标识作用</span><br><span class="line">    this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最常用的构造器之一，实际上就是创建了一个指定大小的Object数组来保存之后add的元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Constructs an empty list with the specified initial capacity.</span><br><span class="line"> *</span><br><span class="line"> * @param  initialCapacity  the initial capacity of the list</span><br><span class="line"> * @throws IllegalArgumentException if the specified initial capacity</span><br><span class="line"> *         is negative</span><br><span class="line"> */</span><br><span class="line">public ArrayList(int initialCapacity) &#123;</span><br><span class="line">    if (initialCapacity &gt; 0) &#123;</span><br><span class="line">         //初始化保存数据的Object数组</span><br><span class="line">        this.elementData = new Object[initialCapacity];</span><br><span class="line">    &#125; else if (initialCapacity == 0) &#123;</span><br><span class="line">        this.elementData = EMPTY_ELEMENTDATA;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        throw new IllegalArgumentException(&quot;Illegal Capacity: &quot;+</span><br><span class="line">                                           initialCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="add方法"><a href="#add方法" class="headerlink" title="add方法"></a>add方法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Appends the specified element to the end of this list.</span><br><span class="line"> *</span><br><span class="line"> * @param e element to be appended to this list</span><br><span class="line"> * @return &lt;tt&gt;true&lt;/tt&gt; (as specified by &#123;@link Collection#add&#125;)</span><br><span class="line"> */</span><br><span class="line">public boolean add(E e) &#123;</span><br><span class="line">    //确保容量足够</span><br><span class="line">    ensureCapacityInternal(size + 1);  // Increments modCount!!</span><br><span class="line">    elementData[size++] = e;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private void ensureCapacityInternal(int minCapacity) &#123;</span><br><span class="line">    ensureExplicitCapacity(calculateCapacity(elementData, minCapacity));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">private static int calculateCapacity(Object[] elementData, int minCapacity) &#123;</span><br><span class="line">    if (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;</span><br><span class="line">        return Math.max(DEFAULT_CAPACITY, minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">    return minCapacity;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>扩容方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Increases the capacity to ensure that it can hold at least the</span><br><span class="line"> * number of elements specified by the minimum capacity argument.</span><br><span class="line"> *</span><br><span class="line"> * @param minCapacity the desired minimum capacity</span><br><span class="line"> */</span><br><span class="line">private void grow(int minCapacity) &#123;</span><br><span class="line">    // overflow-conscious code</span><br><span class="line">    int oldCapacity = elementData.length;</span><br><span class="line">    //扩容为原来的1.5倍</span><br><span class="line">    int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);</span><br><span class="line">    if (newCapacity - minCapacity &lt; 0)</span><br><span class="line">        newCapacity = minCapacity;</span><br><span class="line">    if (newCapacity - MAX_ARRAY_SIZE &gt; 0)</span><br><span class="line">        newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">    // minCapacity is usually close to size, so this is a win:</span><br><span class="line">    elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h4><h5 id="成员属性-1"><a href="#成员属性-1" class="headerlink" title="成员属性"></a>成员属性</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//LinkedList的size是int类型，但是后面会看到LinkedList大小实际只受内存大小的限制也就是LinkedList的size大小可能发生溢出，返回负数</span><br><span class="line">transient int size = 0;</span><br><span class="line"></span><br><span class="line">//LinkedList底层使用双向链表实现，</span><br><span class="line">//并保留了头尾两个节点的引用</span><br><span class="line">transient Node&lt;E&gt; first;//头节点</span><br><span class="line"></span><br><span class="line">transient Node&lt;E&gt; last;//尾节点</span><br></pre></td></tr></table></figure>
+<h5 id="构造器-1"><a href="#构造器-1" class="headerlink" title="构造器"></a>构造器</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">private static class Node&lt;E&gt; &#123;</span><br><span class="line">    E item;//元素值</span><br><span class="line">    Node&lt;E&gt; next;//后继节点</span><br><span class="line"></span><br><span class="line">    //前驱节点,即Node是双向链表</span><br><span class="line">    Node&lt;E&gt; prev;</span><br><span class="line"></span><br><span class="line">    Node(Node&lt;E&gt; prev, E element</span><br><span class="line">    , Node&lt;E&gt; next) &#123;//Node的构造器</span><br><span class="line">        this.item = element;</span><br><span class="line">        this.next = next;</span><br><span class="line">        this.prev = prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//LinkedList无参构造器：什么都没做</span><br><span class="line">public LinkedList() &#123;&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -223,7 +222,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">集合</a>
         		</li>
       		
 		</ul>
@@ -279,7 +278,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/01/30/对象的序列化与反序列化/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/03/06/ArrayList与LinkendList/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -293,18 +292,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/03/06/ArrayList与LinkendList/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          ArrayList与LinkedList
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/12/29/策略模式初识/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">策略模式初识</div>
+    <a href="/2019/01/30/对象的序列化与反序列化/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">对象的序列化与反序列化</div>
       <i class="icon-circle-right"></i>
     </a>
   
