@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>ArrayList与LinkedList | downing</title>
+  <title>log4j与log4j2 | downing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="数组和链表的特性差异，本质是：连续空间存储和非连续空间存储的差异。主要有下面两点：">
-<meta name="keywords" content="集合">
+  <meta name="description" content="log4j2相对于log4j 1.x有了很大的变化，官网宣称的优势有多线程下10几倍于log4j 1.x和logback的高吞吐量、可配置的审计型日志、基于插件架构的各种灵活配置等">
+<meta name="keywords" content="log">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ArrayList与LinkedList">
-<meta property="og:url" content="http://yoursite.com/2019/03/06/ArrayList与LinkendList/index.html">
+<meta property="og:title" content="log4j与log4j2">
+<meta property="og:url" content="http://yoursite.com/2019/04/12/log4j与log4j2的使用/index.html">
 <meta property="og:site_name" content="downing">
-<meta property="og:description" content="数组和链表的特性差异，本质是：连续空间存储和非连续空间存储的差异。主要有下面两点：">
+<meta property="og:description" content="log4j2相对于log4j 1.x有了很大的变化，官网宣称的优势有多线程下10几倍于log4j 1.x和logback的高吞吐量、可配置的审计型日志、基于插件架构的各种灵活配置等">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-06T06:17:46.866Z">
+<meta property="og:updated_time" content="2019-03-21T06:52:11.947Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ArrayList与LinkedList">
-<meta name="twitter:description" content="数组和链表的特性差异，本质是：连续空间存储和非连续空间存储的差异。主要有下面两点：">
+<meta name="twitter:title" content="log4j与log4j2">
+<meta name="twitter:description" content="log4j2相对于log4j 1.x有了很大的变化，官网宣称的优势有多线程下10几倍于log4j 1.x和logback的高吞吐量、可配置的审计型日志、基于插件架构的各种灵活配置等">
   
     <link rel="alternative" href="/atom.xml" title="downing" type="application/atom+xml">
   
@@ -157,38 +157,46 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-ArrayList与LinkendList" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-log4j与log4j2的使用" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      ArrayList与LinkedList
+      log4j与log4j2
     </h1>
   
 
         
-        <a href="/2019/03/06/ArrayList与LinkendList/" class="archive-article-date">
-  	<time datetime="2019-03-06T03:29:11.446Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-06</time>
+        <a href="/2019/04/12/log4j与log4j2的使用/" class="archive-article-date">
+  	<time datetime="2019-04-12T02:48:24.814Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>数组和链表的特性差异，本质是：连续空间存储和非连续空间存储的差异。主要有下面两点：<br><a id="more"></a></p>
-<p>ArrayList：底层是Object数组实现的：由于数组的地址是连续的，数组支持O(1)随机访问；数组在初始化时需要指定容量；数组不支持动态扩容，像ArrayList、Vector和Stack使用的时候看似不用考虑容量问题（因为可以一直往里面存放数据）；但是它们的底层实际做了扩容；数组扩容代价比较大，需要开辟一个新数组将数据拷贝进去，数组扩容效率低；适合读数据较多的场合。<br>LinkedList：底层使用一个Node数据结构，有前后两个指针，双向链表实现的。相对数组，链表插入效率较高，只需要更改前后两个指针即可；另外链表不存在扩容问题，因为链表不要求存储空间连续，每次插入数据都只是改变last指针；另外，链表所需要的内存比数组要多，因为他要维护前后两个指针；它适合删除，插入较多的场景LinkedList还实现了Deque接口。</p>
-<h4 id="Arraylist"><a href="#Arraylist" class="headerlink" title="Arraylist"></a>Arraylist</h4><h5 id="成员属性"><a href="#成员属性" class="headerlink" title="成员属性"></a>成员属性</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Default initial capacity.</span><br><span class="line"> * 默认初始化大小</span><br><span class="line"> */</span><br><span class="line">private static final int DEFAULT_CAPACITY = 10;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Shared empty array instance used for empty instances.</span><br><span class="line"> * 当传入ArrayList构造器的容量为0时用这个数组表示：容器的容量为0</span><br><span class="line"> */</span><br><span class="line">private static final Object[] EMPTY_ELEMENTDATA = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Shared empty array instance used for default sized empty instances. We</span><br><span class="line"> * distinguish this from EMPTY_ELEMENTDATA to know how much to inflate when</span><br><span class="line"> * first element is added.</span><br><span class="line"> * 主要作为一个标识位，在扩容时区分：默认大小和容量为0，使用默认容量时采取的是“懒加载”:即等到add元素的时候才进行实际容量的分配，</span><br><span class="line"> */</span><br><span class="line">private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * The array buffer into which the elements of the ArrayList are stored.</span><br><span class="line"> * The capacity of the ArrayList is the length of this array buffer. Any</span><br><span class="line"> * empty ArrayList with elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA</span><br><span class="line"> * will be expanded to DEFAULT_CAPACITY when the first element is added.</span><br><span class="line"> * ArrayList底层使用Object数组保存的元素</span><br><span class="line"> */</span><br><span class="line">transient Object[] elementData; // non-private to simplify nested class access</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * The size of the ArrayList (the number of elements it contains).</span><br><span class="line"> *</span><br><span class="line"> * @serial</span><br><span class="line"> */</span><br><span class="line">private int size;</span><br></pre></td></tr></table></figure>
-<h5 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h5><p>无参构造器，指向的是默认容量大小的Object数组，注意使用无参构造函数的时候并没有直接创建容量 为10(默认容量是10)的Object数组,而是采取懒加载的策略：使用DEFAULTCAPACITY_EMPTY_ELEMENTDATA,这个默认数组的容量是0,所以得区分是默认容量，还是你传给构造器的容量参数大小本身就是0。在真正执行add操作时才会创建Object数组，即在扩容函数中有处理默认容量的逻辑<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Constructs an empty list with an initial capacity of ten.</span><br><span class="line"> */</span><br><span class="line">public ArrayList() &#123;</span><br><span class="line">    //这个赋值操作仅仅是标识作用</span><br><span class="line">    this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>最常用的构造器之一，实际上就是创建了一个指定大小的Object数组来保存之后add的元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Constructs an empty list with the specified initial capacity.</span><br><span class="line"> *</span><br><span class="line"> * @param  initialCapacity  the initial capacity of the list</span><br><span class="line"> * @throws IllegalArgumentException if the specified initial capacity</span><br><span class="line"> *         is negative</span><br><span class="line"> */</span><br><span class="line">public ArrayList(int initialCapacity) &#123;</span><br><span class="line">    if (initialCapacity &gt; 0) &#123;</span><br><span class="line">         //初始化保存数据的Object数组</span><br><span class="line">        this.elementData = new Object[initialCapacity];</span><br><span class="line">    &#125; else if (initialCapacity == 0) &#123;</span><br><span class="line">        this.elementData = EMPTY_ELEMENTDATA;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        throw new IllegalArgumentException(&quot;Illegal Capacity: &quot;+</span><br><span class="line">                                           initialCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h5 id="add方法"><a href="#add方法" class="headerlink" title="add方法"></a>add方法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Appends the specified element to the end of this list.</span><br><span class="line"> *</span><br><span class="line"> * @param e element to be appended to this list</span><br><span class="line"> * @return &lt;tt&gt;true&lt;/tt&gt; (as specified by &#123;@link Collection#add&#125;)</span><br><span class="line"> */</span><br><span class="line">public boolean add(E e) &#123;</span><br><span class="line">    //确保容量足够</span><br><span class="line">    ensureCapacityInternal(size + 1);  // Increments modCount!!</span><br><span class="line">    elementData[size++] = e;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private void ensureCapacityInternal(int minCapacity) &#123;</span><br><span class="line">    ensureExplicitCapacity(calculateCapacity(elementData, minCapacity));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">private static int calculateCapacity(Object[] elementData, int minCapacity) &#123;</span><br><span class="line">    if (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;</span><br><span class="line">        return Math.max(DEFAULT_CAPACITY, minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">    return minCapacity;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>扩容方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Increases the capacity to ensure that it can hold at least the</span><br><span class="line"> * number of elements specified by the minimum capacity argument.</span><br><span class="line"> *</span><br><span class="line"> * @param minCapacity the desired minimum capacity</span><br><span class="line"> */</span><br><span class="line">private void grow(int minCapacity) &#123;</span><br><span class="line">    // overflow-conscious code</span><br><span class="line">    int oldCapacity = elementData.length;</span><br><span class="line">    //扩容为原来的1.5倍</span><br><span class="line">    int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);</span><br><span class="line">    if (newCapacity - minCapacity &lt; 0)</span><br><span class="line">        newCapacity = minCapacity;</span><br><span class="line">    if (newCapacity - MAX_ARRAY_SIZE &gt; 0)</span><br><span class="line">        newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">    // minCapacity is usually close to size, so this is a win:</span><br><span class="line">    elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h4><h5 id="成员属性-1"><a href="#成员属性-1" class="headerlink" title="成员属性"></a>成员属性</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//LinkedList的size是int类型，但是后面会看到LinkedList大小实际只受内存大小的限制也就是LinkedList的size大小可能发生溢出，返回负数</span><br><span class="line">transient int size = 0;</span><br><span class="line"></span><br><span class="line">//LinkedList底层使用双向链表实现，</span><br><span class="line">//并保留了头尾两个节点的引用</span><br><span class="line">transient Node&lt;E&gt; first;//头节点</span><br><span class="line"></span><br><span class="line">transient Node&lt;E&gt; last;//尾节点</span><br></pre></td></tr></table></figure>
-<h5 id="构造器-1"><a href="#构造器-1" class="headerlink" title="构造器"></a>构造器</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">private static class Node&lt;E&gt; &#123;</span><br><span class="line">    E item;//元素值</span><br><span class="line">    Node&lt;E&gt; next;//后继节点</span><br><span class="line"></span><br><span class="line">    //前驱节点,即Node是双向链表</span><br><span class="line">    Node&lt;E&gt; prev;</span><br><span class="line"></span><br><span class="line">    Node(Node&lt;E&gt; prev, E element</span><br><span class="line">    , Node&lt;E&gt; next) &#123;//Node的构造器</span><br><span class="line">        this.item = element;</span><br><span class="line">        this.next = next;</span><br><span class="line">        this.prev = prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//LinkedList无参构造器：什么都没做</span><br><span class="line">public LinkedList() &#123;&#125;</span><br></pre></td></tr></table></figure>
+        <p>log4j2相对于log4j 1.x有了很大的变化，官网宣称的优势有多线程下10几倍于log4j 1.x和logback的高吞吐量、可配置的审计型日志、基于插件架构的各种灵活配置等<br><a id="more"></a></p>
+<h3 id="log4j"><a href="#log4j" class="headerlink" title="log4j"></a>log4j</h3><p>log4j是通过一个.properties的文件作为主配置文件的，而现在的log4j 2则已经弃用了这种方式，采用的是.xml，.json或者.yml</p>
+<h3 id="log4j2"><a href="#log4j2" class="headerlink" title="log4j2"></a>log4j2</h3><h4 id="yml配置文件"><a href="#yml配置文件" class="headerlink" title="yml配置文件"></a>yml配置文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">Configutation:</span><br><span class="line">  name: Default</span><br><span class="line"></span><br><span class="line">  Properties:</span><br><span class="line">    Property:</span><br><span class="line">      name: log-path</span><br><span class="line">      value: &quot;logs&quot;</span><br><span class="line"></span><br><span class="line">  Appenders: //日志输出位置</span><br><span class="line"></span><br><span class="line">    Console:</span><br><span class="line">      name: Console_Appender</span><br><span class="line">      target: SYSTEM_OUT</span><br><span class="line">      PatternLayout:</span><br><span class="line">        pattern: &quot;[%-5level] %d&#123;yyyy-MM-dd HH:mm:ss.SSS&#125; [%t] %c&#123;1&#125; - %msg%n&quot;</span><br><span class="line"></span><br><span class="line">    File:</span><br><span class="line">      name: File_Appender</span><br><span class="line">      fileName: $&#123;log-path&#125;/logfile.log</span><br><span class="line">      PatternLayout:</span><br><span class="line">        pattern: &quot;[%-5level] %d&#123;yyyy-MM-dd HH:mm:ss.SSS&#125; [%t] %c&#123;1&#125; - %msg%n&quot;</span><br><span class="line"></span><br><span class="line">    RollingFile:</span><br><span class="line">    - name: RollingFile_Appender</span><br><span class="line">      fileName: $&#123;log-path&#125;/rollingfile.log</span><br><span class="line">      filePattern: &quot;logs/archive/rollingfile.log.%d&#123;yyyy-MM-dd-hh-mm&#125;.log&quot;</span><br><span class="line">      PatternLayout:</span><br><span class="line">        pattern: &quot;[%-5level] %d&#123;yyyy-MM-dd HH:mm:ss.SSS&#125; [%t] %c&#123;1&#125; - %msg%n&quot;</span><br><span class="line">      Policies:</span><br><span class="line">        SizeBasedTriggeringPolicy:</span><br><span class="line">          size: 1 KB</span><br><span class="line">      DefaultRollOverStrategy:</span><br><span class="line">        max: 30</span><br><span class="line"></span><br><span class="line">  Loggers:</span><br><span class="line"></span><br><span class="line">    Root:</span><br><span class="line">      level: info</span><br><span class="line">      AppenderRef:</span><br><span class="line">      - ref: Console_Appender</span><br><span class="line"></span><br><span class="line">    Logger:</span><br><span class="line">    - name: com.downing</span><br><span class="line">      additivity: false</span><br><span class="line">      level: debug</span><br><span class="line">      AppenderRef:</span><br><span class="line">      - ref: Console_Appender</span><br><span class="line">        level: info</span><br><span class="line">      - ref: File_Appender</span><br><span class="line">        level: error</span><br><span class="line">      - ref: RollingFile_Appender</span><br><span class="line">        level: info</span><br></pre></td></tr></table></figure>
+<p>其中输出日志格式</p>
+<p>%d{HH:mm:ss.SSS} 表示输出到毫秒的时间</p>
+<p>%t 输出当前线程名称</p>
+<p>%-5level 输出日志级别，-5表示左对齐并且固定输出5个字符，如果不足在右边补0</p>
+<p>%logger 输出logger名称，因为Root Logger没有名称，所以没有输出</p>
+<p>%msg 日志文本</p>
+<p>%n 换行</p>
+<p>其他常用的占位符有：</p>
+<p>%F 输出所在的类文件名，如Client.java</p>
+<p>%L 输出行号</p>
+<p>%M 输出所在方法名</p>
+<p>%l 输出语句所在的行数, 包括类名、方法名、文件名、行数</p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>maven<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- log4j2 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.logging.log4j&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;log4j-api&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.11.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.logging.log4j&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;log4j-core&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.11.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
+<p>代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Logger logger = LogManager.getLogger(RequestAspect.class);</span><br><span class="line">logger.info(&quot;日志输出&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>要注意的是，如果想在springboot项目中使用log4j2,那么需要先把springboot自带的日志依赖排除掉<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">    &lt;exclusions&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-logging&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">    &lt;/exclusions&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="log-back"><a href="#log-back" class="headerlink" title="log-back"></a>log-back</h3><p>springboot里已经集成了个日志框架，可以直接使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">logging:</span><br><span class="line">  file: logs/dev_app.log //输出路径</span><br><span class="line">  pattern:</span><br><span class="line">    console: &quot;%d %-5level %logger : %msg%n&quot;</span><br><span class="line">    file: &quot;%d %-5level [%thread] %logger : %msg%n&quot;</span><br></pre></td></tr></table></figure></p>
+
       
 
       
@@ -222,7 +230,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">集合</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">log</a>
         		</li>
       		
 		</ul>
@@ -278,7 +286,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/03/06/ArrayList与LinkendList/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/12/log4j与log4j2的使用/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -292,18 +300,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/03/21/log4j与log4j2的使用/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          log4j与log4j2
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/01/30/对象的序列化与反序列化/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">对象的序列化与反序列化</div>
+    <a href="/2019/04/12/ArrayList与LinkendList/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ArrayList与LinkedList</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -425,15 +424,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">log</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
